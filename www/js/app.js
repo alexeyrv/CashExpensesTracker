@@ -40,7 +40,21 @@ ExpApp.controller( 'ExpCtrl',
 
 			$scope.db.replicate.to($scope.rdb).on('complete', function () {
 			  // yay, we're done!
-			  //alert( "Replication looks good!")
+			  //alert( "Replication TO looks good!")
+			  console.log( "Сохранено!")
+			}).on('error', function (err) {
+			  // boo, something went wrong!
+			  console.log( "Error replication:\n" + err + "\n----------\n")
+			});
+		
+		}
+
+		$scope.repl2loc = function () {
+
+			$scope.db.replicate.from($scope.rdb).on('complete', function () {
+			  // yay, we're done!
+			  alert( "Загружено!")
+			  console.log( "Replication FROM looks good!")
 			}).on('error', function (err) {
 			  // boo, something went wrong!
 			  console.log( "Error replication:\n" + err + "\n----------\n")
@@ -119,6 +133,8 @@ ExpApp.controller( 'ExpCtrl',
 
 			var nHour = dDate.getHours();
 			var nMin = dDate.getMinutes();
+			if( nHour < 10 ) { nHour = "0" + (nHour+1) }
+			if( nMin < 10 ) { nMin = "0" + (nMin+1) }
 			var ExpTime = nHour + ":" + nMin;
 		
 			//alert("EspDate: " + ExpDate + "ExpTime: " + ExpTime );
@@ -135,7 +151,7 @@ ExpApp.controller( 'ExpCtrl',
 			$scope.db.put( doc ).then( $scope.getAllExp() );
 			//console.log( "Added: " + JSON.stringify( doc ) );
 			
-			
+			$scope.nCost.val = null;
 			
 			/*$scope.db.info().then(function (info) {
 				console.log(info);

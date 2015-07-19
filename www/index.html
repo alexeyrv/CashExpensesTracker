@@ -43,14 +43,19 @@
 			<button ng-click="ClearCost()" class="button button-block button-small button-calm">
 				Очистить </button></div>
 		</div>
-		<div class="row" ng-repeat='cat in aCats'> 
+		<div class="row" ng-repeat='cat in aCats'>
 			<button class="button button-block button-small button-positive"
 				ng-click="addExp($index)"> 
-				{{cat}} </button>
+				<b> {{cat}} </b> </button>
 		</div>
 <!--		</form> -->
 		<div class="row">
-			<button ng-click="repl2rem()" class="button button-block button-small button-energized"> Сохранить на сервер </button>
+			<div class="col">
+			<button ng-click="repl2rem()" class="button button-block button-small button-energized">
+				Сохранить </button></div>
+			<div class="col">
+			<button ng-click="repl2loc()" class="button button-block button-small button-energized">
+				Забрать </button></div>	
 		</div>
 		<div class="row">
 			<button ng-click="getAllExp()" class="button button-block button-small button-balanced"> Посмотреть траты </button>
