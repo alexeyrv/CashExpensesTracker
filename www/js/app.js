@@ -34,7 +34,21 @@ ExpApp.controller( 'ExpCtrl',
 
 		// connect to REMOTE PouchDB
 		$scope.rdb = new PouchDB('https://alexeyr.cloudant.com/pdbexpenses');
-		//$scope.rdb.info().then(function (info) { console.log(info); }) // log rdb info
+		/*
+		// issue - add user to Cloudant for specific database with permissions
+		// auth test works fine for true/false result
+		$scope.rdb = new PouchDB('https://alexeyr.cloudant.com/pdbexpenses',
+		{
+			auth: {
+				username: '123123',
+				password: 'qweqwe' 
+			}
+		}
+
+		);*/
+		
+		$scope.rdb.info().then(function (info) { console.log(info); }) // log rdb info
+		
 		
 		$scope.repl2rem = function () {
 
